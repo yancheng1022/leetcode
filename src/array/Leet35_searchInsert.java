@@ -12,7 +12,7 @@ package array;
  */
 public class Leet35_searchInsert {
     public static void main(String[] args) {
-        int a = 3 / 2;
+        int a = 1 / 2;
         System.out.println(a);
     }
 
@@ -32,18 +32,18 @@ public class Leet35_searchInsert {
     //二分法
     public int searchInsert2(int[] nums, int target) {
         int left = 0;
-        //这里不能用nums.length-1（一个元素的时候不会进入while，如果while修改为left<=right，将会变复杂）
-        int right = nums.length;
-        while (left < right) {
-            //避免溢出的情况 假设全都为int型，上限为65535，first=45535，last=20001。则计算mid = (first+last) /2 时会先计算括号里的数得到65536溢出了。而使用mid = first + (last - first) / 2可以避免这种情况而达到相同的效果
+        int right = nums.length - 1;
+        while (left <= right) {
             int index = left + (right - left) / 2;
-            if (nums[index] >= target) {
-                right = index;
-            } else {
-                //注意这里要+1，用最小的区间，避免出现死循环
+            if (nums[index] > target) {
+                right = index - 1;
+            } else if (nums[index] < target) {
                 left = index + 1;
+            } else {
+                return index;
             }
         }
         return left;
     }
+
 }

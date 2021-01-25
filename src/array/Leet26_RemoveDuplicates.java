@@ -16,14 +16,13 @@ package array;
 public class Leet26_RemoveDuplicates {
     //双指针
     public int removeDuplicates(int[] nums) {
-        int len = nums.length;
-        int left = 0;
-        for (int i = 1; i < len; i++) {
-            if (nums[left] != nums[i]){
+        int left = 1;
+        for (int right = 1; right < nums.length; right++) {
+            if (nums[right] != nums[right - 1]) {
+                nums[left] = nums[right];
                 left++;
-                nums[left] = nums[i];
             }
         }
-        return left+1;
+        return left;
     }
 }

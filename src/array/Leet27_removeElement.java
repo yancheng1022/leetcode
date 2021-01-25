@@ -13,11 +13,10 @@ import java.util.Arrays;
 public class Leet27_removeElement {
     //思路同26题
     public int removeElement(int[] nums, int val) {
-        Arrays.sort(nums);
         int left = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != val) {
-                nums[left] = nums[i];
+        for (int right = 0; right < nums.length;right++){
+            if (nums[right] != val){
+                nums[left] = nums[right];
                 left++;
             }
         }
