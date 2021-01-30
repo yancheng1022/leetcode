@@ -14,8 +14,4 @@ public class Leet349_Intersection {
         return Arrays.stream(nums2).filter(set::contains).distinct().toArray();
     }
 
-    public static void main(String[] args) {
-        String[] a  = new String[]{"ab","bc"};
-        boolean result = Arrays.stream(a).anyMatch("ab"::equals);
-    }
 }
